@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "Market Guru - Home Page";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome to Market Guru Application</h1><br />
+        <p>Learn about stock code and its predictions.</p><br />
+
+
+        <form method="post">
+            <label for="scrip">Enter Stock Code:</label>
+            <input type="text" id="scrip" name="scrip">
+            <input type="submit" value="Submit">
+        </form>
+
+        <br /><br />
+
+
+        @if (Model != null &&  String.IsNullOrEmpty(Model.ErrorMessage))
+        {
+
+            <p>Time : @Model.ReadableMktTime</p>
+            <br /><br />
+
+            <table border="1" align="center">
+                <tr>
+                    <td>Stock Code</td>
+                    <td>@Model.Scrip</td>
+                </tr>
+                <tr>
+                    <td>Current Market Price</td>
+                    <td bgcolor=@Model.Color>@Model.Currentprice</td>
+                </tr>
+                <tr>
+                    <td>High</td>
+                    <td>@Model.High</td>
+                </tr>
+                <tr>
+                    <td>Low</td>
+                    <td>@Model.Low</td>
+                </tr>
+                <tr>
+                    <td>Buy or Sell?</td>
+                    @if (@Model.Recommendation == true)
+                    {
+                        <td>Buy</td>
+                    }
+                    else
+                    {
+                        <td>Sell</td>
+                    }
+                </tr>
+            </table>
+            <br /><br />
+
+            <h2> History of the stock since Jan 2019</h2><br /><br />
+
+            <table border="1" align="center">
+                <tr>
+                    <td>DateTime</td>
+                    <td>Open</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>Close</td>
+                    <td>Volume</td>
+                    <td>AdjustedClose</td>
+                </tr>
+
+                @foreach (var candle in @Model.History)
+                {
+                    <tr>
+                        <td>@candle.DateTime</td>
+                        <td>@candle.Open</td>
+                        <td>@candle.High</td>
+                        <td>@candle.Low</td>
+                        <td>@candle.Close</td>
+                        <td>@candle.Volume</td>
+                        <td>@candle.AdjustedClose</td>
+                    </tr>
+                }
+            </table>
+
+        }
+        else if (Model != null && @Model.ErrorMessage != null)
+        {
+            <p style="color:red;">@Model.ErrorMessage</p>
+        }
+
+    </div>
