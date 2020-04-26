@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketGuru", "MarketGuru\Ma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketGuru.Tests", "MarketGuru.Tests\MarketGuru.Tests.csproj", "{8FF29075-BAA1-4FD7-86EC-E50DF6826A32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketGuru.IntegrationTests", "MarketGuru.IntegrationTests\MarketGuru.IntegrationTests.csproj", "{FEAF9010-1350-4350-8C33-45D48A42964B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8FF29075-BAA1-4FD7-86EC-E50DF6826A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FF29075-BAA1-4FD7-86EC-E50DF6826A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FF29075-BAA1-4FD7-86EC-E50DF6826A32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEAF9010-1350-4350-8C33-45D48A42964B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEAF9010-1350-4350-8C33-45D48A42964B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEAF9010-1350-4350-8C33-45D48A42964B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEAF9010-1350-4350-8C33-45D48A42964B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
