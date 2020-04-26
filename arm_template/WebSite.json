@@ -88,74 +88,36 @@
         "[resourceId('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
       ],
       "properties": {
-        "name": "[parameters('webSiteName')]",
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
-      }
-    },
-    {
-      "apiVersion": "2014-04-01",
-      "name": "[concat(parameters('hostingPlanName'), '-', resourceGroup().name)]",
-      "type": "Microsoft.Insights/autoscalesettings",
-      "location": "[resourceGroup().location]",
-      "tags": {
-        "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]": "Resource",
-        "displayName": "AutoScaleSettings"
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
-      ],
-      "properties": {
-        "profiles": [
-          {
-            "name": "Default",
-            "capacity": {
-              "minimum": 1,
-              "maximum": 2,
-              "default": 1
-            },
-            "rules": [
+        "siteConfig": {
+          "appSettings": [
               {
-                "metricTrigger": {
-                  "metricName": "CpuPercentage",
-                  "metricResourceUri": "[concat(resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
-                  "timeGrain": "PT1M",
-                  "statistic": "Average",
-                  "timeWindow": "PT10M",
-                  "timeAggregation": "Average",
-                  "operator": "GreaterThan",
-                  "threshold": 80.0
-                },
-                "scaleAction": {
-                  "direction": "Increase",
-                  "type": "ChangeCount",
-                  "value": 1,
-                  "cooldown": "PT10M"
-                }
+                  "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                  "value": "[reference(resourceId('microsoft.insights/components/', parameters('webSiteName')), '2015-05-01').InstrumentationKey]"
               },
               {
-                "metricTrigger": {
-                  "metricName": "CpuPercentage",
-                  "metricResourceUri": "[concat(resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
-                  "timeGrain": "PT1M",
-                  "statistic": "Average",
-                  "timeWindow": "PT1H",
-                  "timeAggregation": "Average",
-                  "operator": "LessThan",
-                  "threshold": 60.0
-                },
-                "scaleAction": {
-                  "direction": "Decrease",
-                  "type": "ChangeCount",
-                  "value": 1,
-                  "cooldown": "PT1H"
-                }
+                  "name": "ApplicationInsights:InstrumentationKey",
+                  "value": "[reference(resourceId('microsoft.insights/components/', parameters('webSiteName')), '2015-05-01').InstrumentationKey]"
+              },
+              {
+                "name": "CosmosDb:Account",
+                "Value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', parameters('cosmosName'))).documentEndpoint]"
+              },
+              {
+                "name": "CosmosDb:Key",
+                "Value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('cosmosName')), '2015-04-08').primaryMasterKey]"
+              },
+              {
+                "name": "CosmosDb:DatabaseName",
+                "value": "Tasks"
+              },
+              {
+                "name": "CosmosDb:ContainerName",
+                "value": "Quote"
               }
-            ]
-          }
-        ],
-        "enabled": false,
-        "name": "[concat(parameters('hostingPlanName'), '-', resourceGroup().name)]",
-        "targetResourceUri": "[concat(resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
+          ]
+      },
+        "name": "[parameters('webSiteName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
       }
     },
     {
