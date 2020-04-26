@@ -49,7 +49,7 @@
         "description": "The name of your CosmosDB account"
       }
     },
-    "Cosmostier": {
+    "cosmosTier": {
       "type": "string",
       "defaultValue": "Standard",
       "metadata": {
