@@ -36,6 +36,15 @@ steps:
     projects: '**/MarketGuru.Tests/*.csproj'
     arguments: '--configuration $(BuildConfiguration)'
 
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'cobertura' # Options: cobertura, jaCoCo
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/MarketGuru.Tests/cobertura/coverage.xml'
+    #pathToSources: # Optional
+    #reportDirectory: # Optional
+    #additionalCodeCoverageFiles: # Optional
+    #failIfCoverageEmpty: false # Optional
+
 - task: CopyFiles@2
   displayName: 'Copy ARM templates'
   inputs:
