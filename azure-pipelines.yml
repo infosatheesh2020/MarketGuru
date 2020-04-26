@@ -28,7 +28,21 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
+- task: DotNetCoreCLI@2
+  displayName: Test
   inputs:
+    command: test
     platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    projects: '$(Parameters.UnitTestProjects)'
+    arguments: '--configuration $(BuildConfiguration)'
+
+- task: CopyFiles@3
+  displayName: 'Copy ARM templates'
+  inputs:
+    SourceFolder: arm_template
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@4
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
