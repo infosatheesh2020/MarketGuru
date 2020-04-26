@@ -33,7 +33,7 @@ steps:
   inputs:
     command: test
     platform: '$(buildPlatform)'
-    projects: '$(Parameters.UnitTestProjects)'
+    projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(BuildConfiguration)'
 
 - task: CopyFiles@2

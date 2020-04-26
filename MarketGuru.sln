@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketGuru", "MarketGuru\MarketGuru.csproj", "{8167A012-A36E-4392-8BF3-CF46D2A92F5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketGuru.Tests", "MarketGuru.Tests\MarketGuru.Tests.csproj", "{8FF29075-BAA1-4FD7-86EC-E50DF6826A32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketGuru.Tests", "MarketGuru.Tests\MarketGuru.Tests.csproj", "{8FF29075-BAA1-4FD7-86EC-E50DF6826A32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
