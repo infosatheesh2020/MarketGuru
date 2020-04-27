@@ -1,5 +1,8 @@
 # Market Guru
 
+[![Build Status](https://dev.azure.com/fsvstsdemo/MarketGuru/_apis/build/status/infosatheesh2020.MarketGuru?branchName=master)](https://dev.azure.com/fsvstsdemo/MarketGuru/_build/latest?definitionId=55&branchName=master)
+
+
 Market Guru is a lightweight stock quote application which receives user input of stock symbol and provides quotes along with the buy or sell recommendation based on the data. It also stores all the requested information in a persistent data store for further analysis.
 
 ## Application Design
