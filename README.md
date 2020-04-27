@@ -27,6 +27,9 @@ Below methods are used:
 - Yahoo.Symbols() API to get the Market Price, High, Low, Previous close, volume, 10 day averages, etc.
 - Yahoo.GetHistoricalAsync() API to get the trend information/historical data. The data period is assumed to be monthly and the duration is selected from Jan 2019 to April 2020.
 
+When user provides stock symbol, the system uses Yahoo Finance APIs mentioned above to get the Quote details and return the details to the user along with the color code and recommendations. It also stores the results in a database.
+
+
 **Business Logic:**
 
 - Quote color: If current market price of the stock is above previous day close price, then show the stock in green, Otherwise show the stock in red
